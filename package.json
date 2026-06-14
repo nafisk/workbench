@@ -1,0 +1,16 @@
+{
+  "name": "agent-workbench",
+  "version": "0.1.0",
+  "description": "Central source-of-truth repo for AI coding agent assets.",
+  "type": "module",
+  "bin": {
+    "agent-workbench": "./bin/agent-workbench.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,19 @@
+schema_version: "1.0"
+description: Work profile using spec-driven development and conservative guardrails.
+assets:
+  - core-principles
+  - core-spec-driven-development
+  - core-security-baseline
+  - core-testing-baseline
+  - core-git-workflow
+  - sdd-orchestrator
+  - sdd-create
+  - sdd-design
+  - sdd-tasks
+  - sdd-implement
+  - sdd-verify
+  - rule-security
+  - rule-testing
+  - rule-code-review
+  - spec-templates
+  - mcp-placeholders

@@ -1,0 +1,8 @@
+feature: <feature-slug>
+phase: requirements_review
+approved:
+  requirements: false
+  design: false
+  tasks: false
+current_task: null
+history: []

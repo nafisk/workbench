@@ -1,0 +1,4 @@
+servers:
+  - github
+  - playwright
+  - context7
