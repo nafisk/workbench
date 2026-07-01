@@ -1,7 +1,7 @@
 # Specs
 
 ## Purpose
-Kiro-like spec-driven development templates and workflows.
+Gated spec-driven development templates and workflows.
 
 ## What Belongs Here
 Requirements, design, task, verification, and state templates; reusable spec workflow instructions.

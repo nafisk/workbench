@@ -8,3 +8,5 @@ v0.1 renders:
 - `.claude/settings.json`
 
 Claude Code is a first-class v0.1 target.
+
+Claude command prompts live in `commands/` because they are Claude-specific assets.

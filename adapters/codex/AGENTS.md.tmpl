@@ -1,10 +1,10 @@
-# Agent Workbench Guidance
+# Workbench Guidance
 
 Target: {{TARGET}}
 Profile: {{PROFILE}}
 Repository: {{REPO}}
 
-This file is generated from Agent Workbench. Project-specific facts should stay in this repository.
+This file is generated from Workbench. Project-specific facts should stay in this repository.
 
 ## Core Guidance
 
@@ -16,6 +16,7 @@ This file is generated from Agent Workbench. Project-specific facts should stay 
 
 ## Codex Notes
 
-- Prefer skills in `.agents/skills` for reusable workflows.
+- Prefer `.agents/skills` for Workbench-shared workflows.
+- Use `.codex/skills` only for Codex-native workflows that should not be shared.
 - Use the SDD skills for substantial features and risky bug fixes.
 - Do not bypass spec approval gates unless the user explicitly asks.

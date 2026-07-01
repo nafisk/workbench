@@ -4,7 +4,7 @@
 Map shared assets into target-specific file layouts.
 
 ## What Belongs Here
-Codex, Claude, Kiro, Cursor, and OpenCode templates or mapping docs.
+Codex, Claude, and Gemini templates plus adapter-owned assets such as Claude commands.
 
 ## What Does Not Belong Here
 Shared source guidance or active project files.

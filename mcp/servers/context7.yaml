@@ -1,6 +1,0 @@
-id: context7
-name: Context7
-status: placeholder
-env:
-  api_key: CONTEXT7_API_KEY
-notes: Use for library documentation lookup where supported.

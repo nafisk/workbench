@@ -1,6 +1,6 @@
 ---
 name: sdd-orchestrator
-description: Use when the user asks to create or continue a Kiro-like spec-driven workflow. Orchestrates requirements, design, tasks, implementation, and verification with approval gates.
+description: Use when the user asks to create or continue a gated spec-driven workflow. Orchestrates requirements, design, tasks, implementation, and verification with approval gates.
 ---
 
 # SDD Orchestrator

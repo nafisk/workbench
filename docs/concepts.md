@@ -2,14 +2,13 @@
 
 ## Source Once, Install Per Tool
 
-Agent Workbench keeps canonical assets in one repo:
+Workbench keeps canonical assets in one repo:
 
 ```text
-skills/
-rules/
-commands/
-specs/templates/
 core/
+skills/
+adapters/claude/commands/
+specs/templates/
 ```
 
 Codex and Claude do not read all the same paths, so the CLI installs or renders those assets into each tool's expected layout.
@@ -36,16 +35,16 @@ Example:
 skills/sdd-create/SKILL.md
 ```
 
-The same source skill can be linked into both:
+The same source skill can be copied into both:
 
 ```text
 ~/.agents/skills/sdd-create
 ~/.claude/skills/sdd-create
 ```
 
-## Rules
+## Core Guidance
 
-Rules are durable constraints.
+Core guidance is rendered into each tool's main instruction file.
 
 Examples:
 
@@ -53,11 +52,9 @@ Examples:
 - Verify before marking a task complete.
 - Keep final summaries tied to the approved spec.
 
-Rules are not step-by-step workflows.
-
 ## Specs
 
-The `specs/` folder in Agent Workbench contains templates and workflow instructions.
+The `specs/` folder in Workbench contains templates and workflow instructions.
 
 Active product specs belong in the target project:
 

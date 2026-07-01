@@ -20,7 +20,7 @@ function capture() {
 }
 
 function tempDir() {
-  return fs.mkdtempSync(path.join(os.tmpdir(), "agent-workbench-test-"));
+  return fs.mkdtempSync(path.join(os.tmpdir(), "workbench-test-"));
 }
 
 test("loads registry and profile yaml", () => {
@@ -30,13 +30,16 @@ test("loads registry and profile yaml", () => {
   assert.ok(profile.assets.includes("sdd-orchestrator"));
 });
 
-test("renders Codex and Claude guidance", () => {
+test("renders Codex, Claude, and Gemini guidance", () => {
   const codex = renderTarget({ target: "codex", profile: "spec-driven", repo: "/tmp/example" });
   const claude = renderTarget({ target: "claude", profile: "spec-driven", repo: "/tmp/example" });
-  assert.match(codex, /Agent Workbench/);
+  const gemini = renderTarget({ target: "gemini", profile: "spec-driven", repo: "/tmp/example" });
+  assert.match(codex, /Workbench/);
   assert.match(codex, /sdd-orchestrator/);
   assert.match(claude, /Claude Code/);
   assert.match(claude, /AGENTS\.md/);
+  assert.match(gemini, /Gemini/);
+  assert.match(gemini, /core-principles/);
 });
 
 test("dry-run attach-repo does not mutate destination", async () => {
@@ -59,7 +62,34 @@ test("global install uses each tool's user skill directory", async () => {
   assert.equal(codexCode, 0);
   assert.equal(claudeCode, 0);
   assert.match(codexOut.output(), new RegExp(`${escapeRegex(path.join(home, ".agents", "skills"))}`));
+  assert.match(codexOut.output(), /DRY RUN: copy/);
   assert.match(claudeOut.output(), new RegExp(`${escapeRegex(path.join(home, ".claude", "skills"))}`));
+  assert.match(claudeOut.output(), /DRY RUN: copy/);
+});
+
+test("sync-global dry-run covers global harness layouts without mutating home", async () => {
+  const home = tempDir();
+  const out = capture();
+  const code = await runCli(["sync-global", "--target", "all", "--profile", "spec-driven", "--dry-run"], { stdout: out.stream, home });
+
+  assert.equal(code, 0);
+  assert.match(out.output(), new RegExp(`${escapeRegex(path.join(home, ".codex", "AGENTS.md"))}`));
+  assert.match(out.output(), new RegExp(`${escapeRegex(path.join(home, ".agents", "skills"))}`));
+  assert.match(out.output(), new RegExp(`${escapeRegex(path.join(home, ".claude", "CLAUDE.md"))}`));
+  assert.match(out.output(), new RegExp(`${escapeRegex(path.join(home, ".gemini", "GEMINI.md"))}`));
+  assert.match(out.output(), /adapters\/claude\/commands\/create-spec\.md/);
+  assert.equal(fs.existsSync(path.join(home, ".codex")), false);
+});
+
+test("sync-dotfiles dry-run uses the approved manifest without mutating home", async () => {
+  const home = tempDir();
+  const out = capture();
+  const code = await runCli(["sync-dotfiles", "--dry-run"], { stdout: out.stream, home });
+
+  assert.equal(code, 0);
+  assert.match(out.output(), new RegExp(`${escapeRegex(path.join(home, ".zshrc"))}`));
+  assert.match(out.output(), new RegExp(`${escapeRegex(path.join(home, ".config", "nvim"))}`));
+  assert.equal(fs.existsSync(path.join(home, ".zshrc")), false);
 });
 
 test("doctor reports missing target files", () => {

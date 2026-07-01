@@ -1,6 +1,0 @@
-id: github
-name: GitHub
-status: placeholder
-env:
-  token: GITHUB_TOKEN
-notes: Use an environment variable. Do not store a real token in this repo.

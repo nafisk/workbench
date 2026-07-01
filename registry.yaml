@@ -3,112 +3,112 @@ assets:
   - id: core-principles
     type: core
     status: custom
-    targets: [codex, claude]
+    targets: [codex, claude, gemini]
     install: render
     path: core/principles.md
     description: Shared operating principles for all agent work.
   - id: core-spec-driven-development
     type: core
     status: custom
-    targets: [codex, claude]
+    targets: [codex, claude, gemini]
     install: render
     path: core/spec-driven-development.md
-    description: Kiro-like gated spec-driven development rules.
+    description: Gated spec-driven development rules.
   - id: core-security-baseline
     type: core
     status: custom
-    targets: [codex, claude]
+    targets: [codex, claude, gemini]
     install: render
     path: core/security-baseline.md
     description: Basic security guardrails and secret-handling rules.
   - id: core-testing-baseline
     type: core
     status: custom
-    targets: [codex, claude]
+    targets: [codex, claude, gemini]
     install: render
     path: core/testing-baseline.md
     description: Baseline verification expectations.
   - id: core-git-workflow
     type: core
     status: custom
-    targets: [codex, claude]
+    targets: [codex, claude, gemini]
     install: render
     path: core/git-workflow.md
     description: Git workflow expectations for agent-created changes.
+  - id: core-review-baseline
+    type: core
+    status: custom
+    targets: [codex, claude, gemini]
+    install: render
+    path: core/review-baseline.md
+    description: Review and final-response expectations.
   - id: sdd-orchestrator
     type: skill
     status: custom
-    targets: [codex, claude]
-    install: symlink
+    targets: [codex, claude, agents, gemini]
+    install: copy
     path: skills/sdd-orchestrator
     description: Orchestrate the gated requirements, design, tasks, implementation, and verification workflow.
   - id: sdd-create
     type: skill
     status: custom
-    targets: [codex, claude]
-    install: symlink
+    targets: [codex, claude, agents, gemini]
+    install: copy
     path: skills/sdd-create
     description: Create requirements.md from a natural-language feature request.
   - id: sdd-design
     type: skill
     status: custom
-    targets: [codex, claude]
-    install: symlink
+    targets: [codex, claude, agents, gemini]
+    install: copy
     path: skills/sdd-design
     description: Create design.md after requirements approval.
   - id: sdd-tasks
     type: skill
     status: custom
-    targets: [codex, claude]
-    install: symlink
+    targets: [codex, claude, agents, gemini]
+    install: copy
     path: skills/sdd-tasks
     description: Create tasks.md after design approval.
   - id: sdd-implement
     type: skill
     status: custom
-    targets: [codex, claude]
-    install: symlink
+    targets: [codex, claude, agents, gemini]
+    install: copy
     path: skills/sdd-implement
     description: Implement exactly one approved task and update task state.
   - id: sdd-verify
     type: skill
     status: custom
-    targets: [codex, claude]
-    install: symlink
+    targets: [codex, claude, agents, gemini]
+    install: copy
     path: skills/sdd-verify
     description: Verify implementation against requirements, design, and tasks.
-  - id: rule-security
-    type: rule
+  - id: agent-spec
+    type: skill
     status: custom
-    targets: [codex, claude]
-    install: render
-    path: rules/security.md
-    description: Always-on secure coding rules.
-  - id: rule-testing
-    type: rule
+    targets: [codex, claude, agents, gemini]
+    install: copy
+    path: skills/agent-spec
+    description: Create and maintain local Agent spec-driven development artifacts.
+  - id: humanizer
+    type: skill
     status: custom
-    targets: [codex, claude]
-    install: render
-    path: rules/testing.md
-    description: Always-on testing rules.
-  - id: rule-code-review
-    type: rule
+    targets: [codex, claude, agents, gemini]
+    install: copy
+    path: skills/humanizer
+    description: Edit text so it sounds natural and human-written.
+  - id: ponytail
+    type: skill
     status: custom
-    targets: [codex, claude]
-    install: render
-    path: rules/code-review.md
-    description: Always-on review and final-response expectations.
+    targets: [codex, claude, agents, gemini]
+    install: copy
+    path: skills/ponytail
+    description: Apply pragmatic senior-engineer defaults for code-writing tasks.
   - id: spec-templates
     type: spec-template
     status: custom
-    targets: [codex, claude]
+    targets: [codex, claude, gemini]
     install: copy
     path: specs/templates
     description: Requirements, design, tasks, verification, and state templates.
-  - id: mcp-placeholders
-    type: mcp
-    status: custom
-    targets: [codex, claude]
-    install: render
-    path: mcp
-    description: Placeholder MCP definitions that reference environment variables only.

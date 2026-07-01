@@ -16,7 +16,7 @@ Profiles are tool-neutral. Adapters decide how selected assets are installed.
 Profiles are custom.
 
 ## Install Behavior
-Read by `agent-workbench install`, `attach-repo`, `render`, and `doctor`.
+Read by `sync-global`, `attach-repo`, `render`, and doctor commands.
 
 ## Examples
-`minimal.yaml`, `spec-driven.yaml`, `work.yaml`.
+`spec-driven.yaml`.

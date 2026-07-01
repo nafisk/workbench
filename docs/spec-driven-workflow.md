@@ -1,6 +1,6 @@
 # Spec-Driven Workflow
 
-Agent Workbench includes a small Kiro-like spec workflow.
+Workbench includes a small gated spec workflow.
 
 ## Flow
 

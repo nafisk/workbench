@@ -2,6 +2,7 @@
 
 Start here:
 
+- [Motivation and layout](motivation-and-layout.md)
 - [Setup](setup.md)
 - [Concepts](concepts.md)
 - [Tool layouts](tool-layouts.md)

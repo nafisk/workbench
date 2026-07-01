@@ -1,0 +1,44 @@
+schema_version: "1.0"
+files:
+  - source: dotfiles/home/.zshrc
+    target: .zshrc
+    type: file
+  - source: dotfiles/home/.zprofile
+    target: .zprofile
+    type: file
+  - source: dotfiles/home/.vimrc
+    target: .vimrc
+    type: file
+  - source: dotfiles/home/.tmux.conf
+    target: .tmux.conf
+    type: file
+  - source: dotfiles/home/.config/nvim
+    target: .config/nvim
+    type: directory
+  - source: dotfiles/home/.config/alacritty/alacritty.toml
+    target: .config/alacritty/alacritty.toml
+    type: file
+  - source: dotfiles/home/.config/alacritty/themes/themes/coolnight.toml
+    target: .config/alacritty/themes/themes/coolnight.toml
+    type: file
+  - source: dotfiles/home/.config/git/ignore
+    target: .config/git/ignore
+    type: file
+  - source: dotfiles/home/.config/btop/btop.conf
+    target: .config/btop/btop.conf
+    type: file
+  - source: dotfiles/home/.config/gh/config.yml
+    target: .config/gh/config.yml
+    type: file
+  - source: dotfiles/home/.config/raycast/config.json
+    target: .config/raycast/config.json
+    type: file
+  - source: dotfiles/home/.config/opencode/opencode.jsonc
+    target: .config/opencode/opencode.jsonc
+    type: file
+  - source: dotfiles/home/.config/codexbar/config.json
+    target: .config/codexbar/config.json
+    type: file
+  - source: dotfiles/home/.config/tmux_help.md
+    target: .config/tmux_help.md
+    type: file

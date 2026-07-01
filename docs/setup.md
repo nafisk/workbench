@@ -34,29 +34,24 @@ node bin/agent-workbench.js attach-repo \
 
 ## Install Globally
 
-Use `install` when your user account should get reusable global assets.
-
-Codex:
+Use `sync-global` when your user account should get reusable global assets.
 
 ```bash
-node bin/agent-workbench.js install \
-  --target codex \
-  --profile spec-driven \
-  --mode symlink
+node bin/agent-workbench.js sync-global --dry-run
+node bin/agent-workbench.js sync-global
+node bin/agent-workbench.js doctor-global
 ```
 
-This writes guidance under `~/.codex` and links skills into `~/.agents/skills`.
+This writes guidance under `~/.codex`, `~/.claude`, and `~/.gemini`; copies shared skills into `~/.agents/skills`; and copies Claude assets into `~/.claude`.
 
-Claude Code:
+## Sync Dotfiles
+
+Review the allowlisted dotfile sync before applying it:
 
 ```bash
-node bin/agent-workbench.js install \
-  --target claude \
-  --profile spec-driven \
-  --mode symlink
+node bin/agent-workbench.js sync-dotfiles --dry-run
+node bin/agent-workbench.js doctor-dotfiles
 ```
-
-This writes guidance and links skills under `~/.claude`.
 
 ## Check an Install
 
@@ -65,12 +60,12 @@ node bin/agent-workbench.js doctor --repo /path/to/project --target codex
 node bin/agent-workbench.js doctor --repo /path/to/project --target claude
 ```
 
-`doctor` checks expected files, missing spec folders, broken symlinks, and obvious secret patterns.
+`doctor` checks expected project files, missing spec folders, broken symlinks, and obvious secret patterns.
 
 ## Install Modes
 
-- `copy`: project owns the generated files.
-- `symlink`: project or user config points back to Agent Workbench source files.
+- `copy`: project or user config owns the generated files.
+- `symlink`: project config points back to Workbench source files when explicitly requested.
 - `render`: config files are generated from adapter templates.
 
-Use `copy` for work repos. Use `symlink` for personal global setup.
+Global sync uses `copy` by default.

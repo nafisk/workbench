@@ -1,14 +1,15 @@
 # Tool Layouts
 
-Codex and Claude Code share source assets, but they do not use the same install paths.
+Codex, Claude Code, and Gemini share source assets, but they do not use the same install paths.
 
 ## Shared Source
 
 ```text
-agent-workbench/
+workbench/
+  core/
   skills/sdd-create/
   skills/sdd-design/
-  rules/security.md
+  adapters/claude/commands/
   specs/templates/
 ```
 
@@ -22,8 +23,8 @@ agent-workbench/
 
 ~/.agents/
   skills/
-    sdd-create -> agent-workbench/skills/sdd-create
-    sdd-design -> agent-workbench/skills/sdd-design
+    sdd-create/
+    sdd-design/
 ```
 
 Codex reads user skills from `~/.agents/skills`.
@@ -35,8 +36,8 @@ Codex reads user skills from `~/.agents/skills`.
   CLAUDE.md
   settings.json
   skills/
-    sdd-create -> agent-workbench/skills/sdd-create
-    sdd-design -> agent-workbench/skills/sdd-design
+    sdd-create/
+    sdd-design/
   commands/
 ```
 
@@ -69,6 +70,13 @@ your-project/
     templates/
 ```
 
+## Gemini User Install
+
+```text
+~/.gemini/
+  GEMINI.md
+```
+
 ## Why Not One Shared Folder?
 
 One shared source folder is fine. One shared install folder is not reliable because each tool has its own discovery rules.
@@ -76,5 +84,5 @@ One shared source folder is fine. One shared install folder is not reliable beca
 The stable model is:
 
 ```text
-agent-workbench source -> adapter -> tool-specific install path
+workbench source -> adapter -> tool-specific install path
 ```

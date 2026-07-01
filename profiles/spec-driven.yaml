@@ -6,14 +6,14 @@ assets:
   - core-security-baseline
   - core-testing-baseline
   - core-git-workflow
+  - core-review-baseline
   - sdd-orchestrator
   - sdd-create
   - sdd-design
   - sdd-tasks
   - sdd-implement
   - sdd-verify
-  - rule-security
-  - rule-testing
-  - rule-code-review
+  - agent-spec
+  - humanizer
+  - ponytail
   - spec-templates
-  - mcp-placeholders

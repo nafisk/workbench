@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-set -eu
-echo "uninstall is not implemented in v0.1"
-exit 1

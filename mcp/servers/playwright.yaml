@@ -1,6 +1,0 @@
-id: playwright
-name: Playwright
-status: placeholder
-env:
-  enabled: PLAYWRIGHT_MCP_ENABLED
-notes: Use for browser automation where supported by the target agent.

@@ -1,102 +1,63 @@
-# Agent Workbench
+# Workbench
 
-A central repo for reusable AI coding agent setup.
+<p>
+  <img alt="Codex" src="https://img.shields.io/badge/Codex-managed-2563eb?style=flat-square">
+  <img alt="Claude Code" src="https://img.shields.io/badge/Claude_Code-managed-7c3aed?style=flat-square">
+  <img alt="Gemini" src="https://img.shields.io/badge/Gemini-guidance-16a34a?style=flat-square">
+  <img alt="Sync" src="https://img.shields.io/badge/sync-copy_based-f97316?style=flat-square">
+</p>
 
-Agent Workbench keeps shared agent assets in one place, then installs or renders them into the layout each tool expects. v0.1 supports **Codex** and **Claude Code**.
+Personal source of truth for dotfiles and AI agent harness setup.
+
+Workbench keeps approved files in one repo, then copies or renders them into the layout each tool expects.
+
+> [!NOTE]
+> Global agent sync is copy-based. Dotfile sync should always be reviewed with `--dry-run` before applying.
 
 ## What It Manages
 
-- Skills
-- Rules
-- Commands
-- Spec-driven development templates
-- Codex and Claude adapters
-- MCP placeholders
-- Install profiles
-- Doctor checks
+| Area | What lives here |
+| --- | --- |
+| Agent setup | Guidance, skills, Claude commands, and spec templates |
+| Dotfiles | Approved home and `.config` files mirrored under `dotfiles/home` |
+| Sync tooling | CLI commands for dry-runs, live sync, and doctor checks |
 
 ## Quick Start
 
-Install dependencies:
-
 ```bash
 npm install
+npm test
+node bin/agent-workbench.js sync-global --dry-run
+node bin/agent-workbench.js sync-dotfiles --dry-run
 ```
 
-Attach the spec-driven setup to a Codex project:
+Apply agent harness files after reviewing the dry run:
 
 ```bash
-node bin/agent-workbench.js attach-repo \
-  --repo /path/to/project \
-  --target codex \
-  --profile spec-driven \
-  --mode copy
+node bin/agent-workbench.js sync-global
+node bin/agent-workbench.js doctor-global
 ```
 
-Attach the same setup to a Claude Code project:
+## Directory Map
 
-```bash
-node bin/agent-workbench.js attach-repo \
-  --repo /path/to/project \
-  --target claude \
-  --profile spec-driven \
-  --mode copy
-```
-
-Check an attached project:
-
-```bash
-node bin/agent-workbench.js doctor --repo /path/to/project --target codex
-node bin/agent-workbench.js doctor --repo /path/to/project --target claude
-```
-
-## Repository Structure
-
-```text
-agent-workbench/
-  README.md              # Project overview
-  registry.yaml          # Asset catalog
-  package.json           # Node CLI package metadata
-
-  core/                  # Shared principles and global behavior
-  skills/                # Reusable workflows
-  rules/                 # Always-on constraints
-  commands/              # User-invoked command prompts
-  specs/                 # Spec-driven templates and workflow docs
-  adapters/              # Codex, Claude, and future tool mappings
-  profiles/              # Install bundles
-  mcp/                   # MCP placeholders and profiles
-  hooks/                 # Future hook assets
-  agents/                # Future specialist agents
-  prompts/               # Draft prompt fragments
-  templates/             # Shared render templates
-  scripts/               # CLI wrapper scripts
-  src/                   # Node CLI implementation
-  test/                  # Node test suite
-  evals/                 # Manual workflow smoke tests
-  examples/              # Example installed project layouts
-  docs/                  # Setup and design documentation
-```
+| Directory | Purpose |
+| --- | --- |
+| `adapters/` | Tool-specific guidance templates |
+| `core/` | Shared operating guidance |
+| `dotfiles/` | Approved dotfiles mirror and sync manifest |
+| `profiles/` | Install bundles |
+| `skills/` | Reusable agent workflows |
+| `specs/` | Spec-driven templates |
+| `src/` | Sync CLI |
+| `test/` | Node test suite |
 
 ## Docs
 
+- [Motivation and layout](docs/motivation-and-layout.md)
 - [Setup](docs/setup.md)
-- [Concepts](docs/concepts.md)
 - [Tool layouts](docs/tool-layouts.md)
 - [Spec-driven workflow](docs/spec-driven-workflow.md)
-- [Adapter compatibility](docs/adapter-compatibility.md)
 
-## Current Scope
+## Safety
 
-v0.1 is intentionally small:
-
-- Codex and Claude Code are implemented targets.
-- Kiro, Cursor, and OpenCode are documented as future targets.
-- The built-in SDD workflow is custom and kept separate from OSS frameworks.
-- MCP entries are placeholders only. No secrets belong in this repo.
-
-## Test
-
-```bash
-npm test
-```
+No secrets belong in this repo. Keep credentials, app caches, databases, logs, sockets, and generated runtime state out of Git.

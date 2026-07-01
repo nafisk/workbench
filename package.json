@@ -1,9 +1,10 @@
 {
-  "name": "agent-workbench",
+  "name": "workbench",
   "version": "0.1.0",
   "description": "Central source-of-truth repo for AI coding agent assets.",
   "type": "module",
   "bin": {
+    "workbench": "./bin/agent-workbench.js",
     "agent-workbench": "./bin/agent-workbench.js"
   },
   "scripts": {
